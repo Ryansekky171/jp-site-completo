@@ -1,0 +1,990 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>JP Consultoria — Tributária, Jurídica e Contábil</title>
+<meta name="description" content="Consultoria tributária, jurídica e contábil para pequenas e médias empresas. Jackson Nunes — São Paulo, SP."/>
+<link rel="icon" href="./06-favicon.png" type="image/png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+/* ─── Reset ─────────────────────────────────── */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Manrope",sans-serif;font-size:16px;line-height:1.7;background:#f4f0e7;color:#27271f;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+::selection{background:#8d741f;color:#fff}
+
+/* ─── Tokens ─────────────────────────────────── */
+:root{
+  --dark:#171713;
+  --dark2:#24241e;
+  --cream:#f4f0e7;
+  --cream2:#fbf9f4;
+  --gold:#927820;
+  --gold2:#b99a32;
+  --gold3:#c7a63b;
+  --ink:#27271f;
+  --muted:#6b6a60;
+  --border:rgba(39,39,31,.14);
+  --serif:"Cormorant Garamond",Georgia,serif;
+  --ease:cubic-bezier(.23,1,.32,1);
+}
+
+/* ─── Layout ─────────────────────────────────── */
+.wrap{width:min(100% - 2.5rem,1280px);margin-inline:auto}
+.page{display:none}
+.page.active{display:block}
+section{padding:5rem 80px}
+@media(min-width:768px){section{padding:7rem 80px}}
+
+/* ─── Typography ─────────────────────────────── */
+.serif{font-family:var(--serif)}
+.display{font-family:var(--serif);font-weight:600;line-height:.92;letter-spacing:-.03em}
+.eyebrow{font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.section-title{font-family:var(--serif);font-size:clamp(2.8rem,5vw,5rem);font-weight:600;line-height:.94;letter-spacing:-.04em;color:var(--dark2)}
+
+/* ─── Buttons ────────────────────────────────── */
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.82rem 1.3rem;font-size:.7rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;border:1px solid transparent;transition:all 180ms var(--ease)}
+.btn:active{transform:scale(.97)}
+.btn-gold{background:var(--gold);color:#fff}
+.btn-gold:hover{background:var(--gold2)}
+.btn-outline{border-color:rgba(255,255,255,.24);color:#fff}
+.btn-outline:hover{border-color:var(--gold2);color:var(--gold3)}
+.btn-dark{background:var(--dark2);color:#fff}
+.btn-dark:hover{background:var(--gold)}
+.text-link{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid var(--gold);padding-bottom:.3rem;color:var(--dark2)}
+.text-link:hover{color:var(--gold)}
+
+/* ─── Top bar ────────────────────────────────── */
+.topbar{background:var(--dark);color:rgba(255,255,255,.6);font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;display:none}
+@media(min-width:768px){.topbar{display:block}}
+.topbar-inner{display:flex;justify-content:space-between;align-items:center;height:2.4rem}
+.topbar a{transition:color 180ms var(--ease)}
+.topbar a:hover{color:var(--gold2)}
+.topbar-links{display:flex;gap:1.5rem}
+
+/* ─── Header ─────────────────────────────────── */
+header{position:sticky;top:0;z-index:50;background:rgba(23,23,19,.96);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.07)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;height:5rem}
+@media(min-width:768px){.header-inner{height:6rem}}
+.logo{display:flex;align-items:center;gap:.75rem;flex-shrink:0}
+.logo img{height:3.2rem;width:3.2rem;object-fit:contain}
+@media(min-width:768px){.logo img{height:3.8rem;width:3.8rem}}
+.logo-text{display:flex;flex-direction:column}
+.logo-text strong{font-family:var(--serif);font-size:1.1rem;font-weight:600;color:#fff;line-height:1.1}
+.logo-text span{font-size:.55rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+
+nav.desktop{display:none}
+@media(min-width:1024px){nav.desktop{display:flex;align-items:center;gap:2rem}}
+.nav-link{position:relative;padding:.6rem 0;font-size:.67rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.65);transition:color 180ms var(--ease)}
+.nav-link::after{content:"";position:absolute;left:0;right:0;bottom:.4rem;height:1px;background:var(--gold2);transform:scaleX(0);transform-origin:right;transition:transform 220ms var(--ease)}
+.nav-link:hover,.nav-link.active{color:#fff}
+.nav-link:hover::after,.nav-link.active::after{transform:scaleX(1);transform-origin:left}
+
+.menu-btn{display:flex;align-items:center;justify-content:center;width:2.75rem;height:2.75rem;border:1px solid rgba(255,255,255,.18);background:transparent;color:#fff;transition:border-color 180ms var(--ease)}
+.menu-btn:hover{border-color:var(--gold2)}
+@media(min-width:1024px){.menu-btn{display:none}}
+
+/* ─── Mobile nav ─────────────────────────────── */
+.mobile-nav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--dark);border-top:1px solid rgba(255,255,255,.08);z-index:49}
+.mobile-nav.open{display:block}
+.mobile-nav-inner{padding:.5rem 0 1.25rem}
+.mobile-nav a{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.25rem;font-size:.82rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.72);border-bottom:1px solid rgba(255,255,255,.07);transition:color 180ms var(--ease)}
+.mobile-nav a:hover,.mobile-nav a.active{color:var(--gold3)}
+.mobile-nav .btn-gold{margin:1rem 1.25rem 0;justify-content:center}
+
+/* ─── Hero ───────────────────────────────────── */
+.hero{position:relative;min-height:32rem;display:flex;align-items:flex-end;overflow:hidden;background:var(--dark)}
+@media(min-width:768px){.hero{min-height:38rem}}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(90deg,rgba(23,23,19,.97) 0%,rgba(23,23,19,.8) 45%,rgba(23,23,19,.3) 100%)}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.45}
+.hero-content{position:relative;padding:4rem 0 5rem;color:#fff;max-width:42rem}
+.hero-pills{background:#353535b5;display:flex;border-top:1px solid rgba(255,255,255,.1);margin-top:0}
+.hero-pill{flex:1;display:flex;align-items:center;gap:.75rem;padding:1.1rem .5rem;border-right:1px solid rgba(255,255,255,.1);font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.hero-pill:last-child{border-right:none}
+.hero-pill span{font-family:var(--serif);font-size:1.4rem;color:var(--gold2)}
+
+/* ─── Page hero ──────────────────────────────── */
+.page-hero{position:relative;min-height:22rem;display:flex;align-items:flex-end;overflow:hidden;background:var(--dark2)}
+.page-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.35}
+.page-hero::after{content:"";position:absolute;inset:0;}
+.page-hero-content{position:relative;z-index:2;padding:3.5rem 0 4rem;color:#fff;border-left:2px solid var(--gold);padding-left:1.5rem;max-width:36rem}
+
+/* ─── Section helpers ────────────────────────── */
+.section-2col{display:grid;gap:3rem}
+@media(min-width:1024px){.section-2col{grid-template-columns:1fr 1.4fr;gap:5rem;align-items:start}}
+.sticky-col{position:static}
+@media(min-width:1024px){.sticky-col{position:sticky;top:8rem;align-self:start}}
+
+/* ─── Service cards (home grid) ──────────────── */
+.service-grid{display:grid;border-left:1px solid var(--border);border-top:1px solid var(--border)}
+@media(min-width:640px){.service-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.service-grid{grid-template-columns:repeat(3,1fr)}}
+.service-card{padding:3rem 2rem;border-right:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--cream2);min-height:14rem;display:flex;flex-direction:column;transition:background 220ms var(--ease),transform 220ms var(--ease)}
+.service-card:hover{background:#ece8da;transform:translateY(-3px)}
+.service-card .num{font-family:var(--serif);font-size:1.3rem;color:rgba(141,116,31,.5);align-self:flex-end}
+.service-card .icon{color:var(--gold);margin-bottom:auto}
+.service-card h3{font-family:var(--serif);font-size:1.8rem;font-weight:600;line-height:1.1;color:var(--dark2);margin-top:2rem}
+.service-card p{font-size:.82rem;line-height:1.7;color:var(--muted);margin-top:.65rem}
+.service-card .arrow{margin-top:1.25rem;color:var(--gold);transition:transform 200ms var(--ease)}
+.service-card:hover .arrow{transform:translateX(4px)}
+
+/* ─── Dark commitment section ────────────────── */
+.commitment{background:var(--dark2);color:#fff;padding:5rem 0}
+.commitment-grid{display:grid;gap:3rem}
+@media(min-width:1024px){.commitment-grid{grid-template-columns:1fr 1fr;gap:4rem;align-items:center}}
+.commitment h2{font-family:var(--serif);font-size:clamp(2.5rem,5vw,4rem);font-weight:600;line-height:.96;letter-spacing:-.03em}
+.values-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:2rem;background:rgba(255,255,255,.12)}
+.value-item{background:var(--dark2);padding:.9rem;text-align:center;font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.65)}
+
+/* ─── CTA panel ──────────────────────────────── */
+.cta-panel{background:var(--dark2);padding:3rem 2rem;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:2rem}
+@media(min-width:768px){.cta-panel{padding:4rem}}
+@media(min-width:1024px){.cta-panel{flex-direction:row;justify-content:space-between;align-items:flex-end;padding:4.5rem}}
+.cta-panel::after{content:"";position:absolute;right:-6rem;bottom:-8rem;width:20rem;height:20rem;border:1px solid rgba(185,154,50,.2);border-radius:50%;pointer-events:none}
+.cta-panel h2{font-family:var(--serif);font-size:clamp(2.4rem,4.5vw,4.2rem);font-weight:600;line-height:.96;letter-spacing:-.03em;color:#fff;max-width:32rem}
+
+/* ─── About page ─────────────────────────────── */
+.stats-row{display:grid;gap:1px;background:rgba(41,41,33,.12)}
+@media(min-width:768px){.stats-row{grid-template-columns:repeat(3,1fr)}}
+.stat-item{background:var(--cream);padding:2.5rem 2rem}
+.stat-item strong{font-family:var(--serif);font-size:4rem;font-weight:600;color:var(--gold);line-height:1}
+.stat-item p{font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#48483f;margin-top:.75rem}
+.mvv-grid{display:grid;gap:1px;background:rgba(255,255,255,.1)}
+@media(min-width:1024px){.mvv-grid{grid-template-columns:repeat(3,1fr)}}
+.mvv-card{background:var(--dark2);padding:2.5rem}
+.mvv-card .num{font-family:var(--serif);font-size:1.2rem;color:rgba(255,255,255,.25);float:right}
+.mvv-card h3{font-family:var(--serif);font-size:2.8rem;font-weight:600;margin-top:3rem}
+.mvv-card p{font-size:.82rem;line-height:1.8;color:rgba(255,255,255,.58);margin-top:1.25rem}
+
+/* ─── Services accordion ─────────────────────── */
+.accordion{border-top:1px solid var(--border)}
+details.acc-item{border-bottom:1px solid var(--border)}
+details.acc-item summary{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:1.7rem 0;cursor:pointer;list-style:none}
+details.acc-item summary::-webkit-details-marker{display:none}
+.acc-left{display:flex;align-items:center;gap:1.25rem}
+.acc-num{font-family:var(--serif);font-size:1.2rem;color:rgba(141,116,31,.55);flex-shrink:0;width:2rem}
+.acc-icon{color:var(--gold);flex-shrink:0;display:none}
+@media(min-width:640px){.acc-icon{display:block}}
+.acc-title strong{display:block;font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:600;color:var(--dark2);line-height:1.1}
+.acc-title small{display:block;font-size:.8rem;color:var(--muted);margin-top:.4rem;max-width:36rem}
+.acc-plus{color:var(--gold);flex-shrink:0;transition:transform 220ms var(--ease);font-size:1.4rem;line-height:1}
+details[open] .acc-plus{transform:rotate(45deg)}
+.acc-body{padding:.5rem 0 2rem;padding-left:0}
+@media(min-width:640px){.acc-body{padding-left:5rem}}
+.acc-bullet{display:flex;align-items:flex-start;gap:.75rem;font-size:.85rem;line-height:1.75;color:var(--muted);padding:.4rem 0}
+.acc-bullet::before{content:"✓";color:var(--gold);font-weight:700;flex-shrink:0;margin-top:.05rem}
+
+/* ─── Links úteis ────────────────────────────── */
+.search-box{display:flex;align-items:center;gap:.75rem;border-bottom:1px solid var(--gold);padding-bottom:.6rem;color:var(--gold)}
+.search-box input{flex:1;border:none;outline:none;background:transparent;font-family:inherit;font-size:1rem;color:var(--ink)}
+.search-box input::placeholder{color:#a09e92}
+.link-group{margin-top:3rem}
+.link-group h3{font-family:var(--serif);font-size:2rem;font-weight:600;color:var(--dark2);padding-bottom:.8rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:baseline}
+.link-group h3 span{font-family:"Manrope",sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.link-grid{display:grid;gap:1px;background:rgba(40,40,32,.1);margin-top:1px}
+@media(min-width:640px){.link-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.link-grid{grid-template-columns:repeat(3,1fr)}}
+.link-item{display:flex;align-items:center;justify-content:space-between;gap:1rem;background:var(--cream2);padding:1.2rem 1.3rem;font-size:.82rem;font-weight:600;color:#3f3e36;min-height:4rem;transition:background 180ms var(--ease),color 180ms var(--ease)}
+.link-item:hover{background:#ece4d3;color:#6e5918}
+.link-item svg{flex-shrink:0;color:var(--gold);transition:transform 180ms var(--ease)}
+.link-item:hover svg{transform:translate(2px,-2px)}
+#no-results{display:none;text-align:center;padding:4rem 1rem;border:1px solid var(--border);background:var(--cream2)}
+#no-results p:first-child{font-family:var(--serif);font-size:2rem;font-weight:600;color:var(--dark2)}
+#no-results p:last-child{font-size:.85rem;color:var(--muted);margin-top:.5rem}
+
+/* ─── Contact ────────────────────────────────── */
+.contact-grid{display:grid;gap:3rem}
+@media(min-width:1024px){.contact-grid{grid-template-columns:.85fr 1.15fr;gap:5rem;align-items:start}}
+.contact-row{display:grid;grid-template-columns:auto 1fr auto;gap:1rem;align-items:center;border-bottom:1px solid var(--border);padding:1.2rem 0;color:var(--dark2);transition:color 180ms var(--ease)}
+.contact-row:hover{color:var(--gold)}
+.contact-row svg:first-child{color:var(--gold)}
+.contact-row small{display:block;font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.2rem}
+.contact-row strong{font-size:.86rem;font-weight:600}
+.contact-form{background:var(--cream);padding:2rem}
+@media(min-width:768px){.contact-form{padding:3rem}}
+.form-grid{display:grid;gap:1.1rem}
+.form-row{display:grid;gap:1.1rem}
+@media(min-width:640px){.form-row{grid-template-columns:1fr 1fr}}
+.field-label{display:grid;gap:.5rem;font-size:.67rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#504f45}
+.field-input{width:100%;padding:.85rem 1rem;border:1px solid rgba(41,41,33,.16);background:var(--cream2);font-family:inherit;font-size:.86rem;color:var(--dark2);outline:none;transition:border-color 180ms var(--ease),box-shadow 180ms var(--ease)}
+.field-input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(141,116,31,.1)}
+textarea.field-input{min-height:8rem;resize:vertical}
+.form-note{font-size:.75rem;color:var(--muted);margin-top:.75rem;line-height:1.6}
+
+/* ─── Footer ─────────────────────────────────── */
+footer{background:var(--dark);color:#fff;padding:4rem 0 0;position:relative;overflow:hidden}
+footer::before{content:"";position:absolute;right:-8rem;top:-9rem;width:20rem;height:20rem;border-radius:50%;border:1px solid rgba(154,127,35,.2);pointer-events:none}
+.footer-grid{display:grid;gap:3rem}
+@media(min-width:1024px){.footer-grid{grid-template-columns:1.1fr .6fr 1.2fr;gap:4rem}}
+footer .logo img{height:4rem;width:4rem;object-fit:contain}
+footer .logo{margin-bottom:1.25rem}
+footer p.tagline{font-size:.83rem;color:rgba(255,255,255,.55);max-width:22rem;line-height:1.7}
+.footer-label{font-size:.64rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold2);margin-bottom:1.25rem}
+.footer-links{display:flex;flex-direction:column;gap:.6rem}
+.footer-links a{font-size:.82rem;color:rgba(255,255,255,.6);transition:color 180ms var(--ease)}
+.footer-links a:hover{color:var(--gold3)}
+.footer-contact-list{display:flex;flex-direction:column;gap:1rem}
+.footer-contact-row{display:flex;align-items:flex-start;gap:.75rem;font-size:.78rem;color:rgba(255,255,255,.6);transition:color 180ms var(--ease)}
+.footer-contact-row:hover{color:#fff}
+.footer-contact-row svg{color:var(--gold2);flex-shrink:0;margin-top:.1rem}
+.footer-bottom{margin-top:3rem;padding:1.25rem 0;border-top:1px solid rgba(255,255,255,.1);display:flex;flex-direction:column;gap:.5rem;font-size:.7rem;color:rgba(255,255,255,.38)}
+@media(min-width:640px){.footer-bottom{flex-direction:row;justify-content:space-between;align-items:center}}
+
+/* ─── WhatsApp float ─────────────────────────── */
+.wa-float{position:fixed;z-index:45;right:1rem;bottom:1rem;display:flex;align-items:center;gap:.5rem;background:var(--gold);color:#fff;padding:.7rem .9rem;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;box-shadow:0 10px 30px rgba(20,20,16,.3);transition:background 180ms var(--ease),transform 180ms var(--ease)}
+.wa-float:hover{background:var(--gold2);transform:translateY(-2px)}
+.wa-float span{display:none}
+@media(min-width:640px){.wa-float span{display:inline}}
+
+/* ─── SVG icons inline ───────────────────────── */
+.icon{display:inline-block;vertical-align:middle}
+
+/* ─── Reveal animation ───────────────────────── */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;transition-duration:.01ms !important}
+  .reveal{opacity:1;transform:none}
+}
+.separate{
+  display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+}
+</style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="topbar">
+  <div class="wrap topbar-inner">
+    <span>Consultoria tributária, jurídica e contábil</span>
+    <div class="topbar-links">
+      <a href="tel:+5511964707668">11 96470-7668</a>
+      <a href="mailto:jackson@jptributariojuridico.com.br">jackson@jptributariojuridico.com.br</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="wrap">
+    <div class="header-inner">
+      <a href="#" class="logo" onclick="showPage('home');return false">
+        <img src="./01-logo-original.png" alt="JP Consultoria" style="mix-blend-mode:lighten"/>
+      </a>
+
+      <nav class="desktop">
+        <a href="#" class="nav-link active" data-page="home" onclick="showPage('home');return false">Home</a>
+        <a href="#" class="nav-link" data-page="sobre" onclick="showPage('sobre');return false">Sobre nós</a>
+        <a href="#" class="nav-link" data-page="servicos" onclick="showPage('servicos');return false">Serviços</a>
+        <a href="#" class="nav-link" data-page="links" onclick="showPage('links');return false">Links úteis</a>
+        <a href="#" class="nav-link" data-page="contato" onclick="showPage('contato');return false">Contato</a>
+      </nav>
+
+      <a href="#" class="btn btn-outline" style="display:none" onclick="showPage('contato');return false" id="header-cta">
+        Fale conosco
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+      <style>@media(min-width:1024px){#header-cta{display:inline-flex}}</style>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+        <svg id="ico-menu" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg id="ico-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <nav class="mobile-nav" id="mobileNav">
+    <div class="wrap mobile-nav-inner">
+      <a href="#" data-page="home" onclick="showPage('home');closeMobile();return false">Home <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+      <a href="#" data-page="sobre" onclick="showPage('sobre');closeMobile();return false">Sobre nós <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+      <a href="#" data-page="servicos" onclick="showPage('servicos');closeMobile();return false">Serviços <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+      <a href="#" data-page="links" onclick="showPage('links');closeMobile();return false">Links úteis <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+      <a href="#" data-page="contato" onclick="showPage('contato');closeMobile();return false">Contato <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+      <a href="https://wa.me/5511964707668" target="_blank" rel="noreferrer" class="btn btn-gold" style="margin:1rem 0 0;justify-content:center">Conversar pelo WhatsApp</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ══════════════════════════════════════════════
+     HOME
+══════════════════════════════════════════════ -->
+<div id="page-home" class="page active">
+
+  <!-- Hero -->
+  <section class="hero" style="padding:0 80px">
+    <img class="hero-img" src="./02-hero-home.png" alt=""/>
+    <div class="hero-bg"></div>
+    <div class="wrap" style="position:relative;width:100%;padding-bottom:0">
+      <div class="hero-content reveal">
+        <p class="eyebrow" style="color:var(--gold3)">Consultoria empresarial</p>
+        <h1 class="display" style="font-size:clamp(3.8rem,9vw,7.5rem);color:#fff;margin-top:1.25rem">
+          Sua empresa em <span style="color:var(--gold2)">boas mãos.</span>
+        </h1>
+        <p style="margin-top:1.5rem;max-width:38rem;color:rgba(255,255,255,.68);font-size:clamp(.95rem,1.5vw,1.1rem);line-height:1.75">
+          Estratégia contábil, tributária e jurídica para reduzir incertezas, organizar rotinas e apoiar o crescimento do seu negócio.
+        </p>
+        <div style="margin-top:2rem;display:flex;flex-wrap:wrap;gap:.75rem">
+          <a href="#" class="btn btn-gold" onclick="showPage('contato');return false">
+            Fale com a JP
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="#" class="btn btn-outline" onclick="showPage('servicos');return false">Conheça os serviços</a>
+        </div>
+      </div>
+      <div class="hero-pills">
+        <div class="hero-pill"><span>01</span>Contabilidade</div>
+        <div class="hero-pill"><span>02</span>Imposto</div>
+        <div class="hero-pill"><span>03</span>Consultivo</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Como atuamos -->
+  <section style="background:var(--cream); ">
+    <div class="wrap section-2col">
+      <div class="sticky-col">
+        <p class="eyebrow">Como atuamos</p>
+        <h2 class="section-title" style="margin-top:1rem">Visão ampla.<br>Resposta precisa.</h2>
+      </div>
+      <div style="border-left:1.5px solid rgba(154,127,35,.28);padding-left:1.5rem" class="reveal">
+        <p style="font-size:clamp(1.1rem,2vw,1.4rem);line-height:1.7;color:#383831">
+          A JP Consultoria integra conhecimento contábil, fiscal e jurídico para que o empresário possa concentrar energia no crescimento da empresa.
+        </p>
+        <p style="margin-top:1.5rem;font-size:.92rem;line-height:1.85;color:var(--muted)">
+          Cada trabalho parte da realidade do negócio. Da estratégia à prática, organizamos processos, analisamos riscos e construímos caminhos possíveis com comunicação clara e acompanhamento próximo.
+        </p>
+        <a href="#" class="text-link" style="margin-top:1.75rem" onclick="showPage('sobre');return false">
+          Conheça nossa história
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Serviços (6 cards) -->
+  <section style="background-color: white;">
+    <div class="wrap">
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1rem;margin-bottom:3rem">
+        <div>
+          <p class="eyebrow">Serviços</p>
+          <h2 class="section-title" style="margin-top:.75rem;max-width:600px">Estrutura para cada etapa do seu negócio.</h2>
+        </div>
+        <a href="#" class="text-link" onclick="showPage('servicos');return false">
+          Ver todos os serviços
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+      <div class="service-grid reveal">
+        <div class="service-card"><div class="separate"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span class="num">01</span></div><h3>Fiscal e tributário</h3><p>Planejamento, auditoria e acompanhamento para decisões tributárias mais seguras.</p><svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        <div class="service-card"><div class="separate"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/><line x1="9" y1="15" x2="11" y2="15"/></svg><span class="num">02</span></div><h3>Assessoria contábil</h3><p>Rotinas contábeis estruturadas, demonstrações claras e tecnologia aplicada ao dia a dia.</p><svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        <div class="service-card"><div class="separate"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span class="num">03</span></div><h3>Departamento pessoal</h3><p>Gestão trabalhista, folha e obrigações com suporte próximo e processos digitais.</p><svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        <div class="service-card"><div class="separate"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="8" r="6"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg><span class="num">04</span></div><h3>Marcas e patentes</h3><p>Acompanhamento do registro da pesquisa de viabilidade à emissão do certificado.</p><svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        <div class="service-card"><div class="separate"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 9l2-5h14l2 5"/><path d="M4 9v11h16V9"/><path d="M9 20v-6h6v6"/><path d="M4 9a2.5 2.5 0 0 0 4 0 2.5 2.5 0 0 0 4 0 2.5 2.5 0 0 0 4 0 2.5 2.5 0 0 0 4 0"/></svg><span class="num">05</span></div><h3>Abertura de empresas</h3><p>Constituição, alteração e encerramento na Jucesp com orientação especializada.</p><svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        <div class="service-card"><div class="separate"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="9" y="2" width="6" height="5" rx="1"/><rect x="2" y="17" width="6" height="5" rx="1"/><rect x="16" y="17" width="6" height="5" rx="1"/><path d="M12 7v4M5 17v-2.5h14V17"/></svg><span class="num">06</span></div><h3>Abertura de holding</h3><p>Estruturação patrimonial e societária para proteger e organizar seus ativos.</p><svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Compromisso -->
+  <section class="commitment">
+    <div class="wrap commitment-grid reveal">
+      <div style="position:relative;padding-left:1.5rem;border-left:1px solid rgba(168,137,40,.4)">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" style="color:var(--gold2)"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        <p class="eyebrow" style="color:var(--gold3);margin-top:1.5rem">Nosso compromisso</p>
+        <h2  style="color:#fff;margin-top:1rem; min-width: 500px;">Técnica que orienta.<br>Proximidade que resolve.</h2>
+        
+      </div>
+      <div>
+        <p style="font-size:1.1rem;line-height:1.85;color:rgba(255,255,255,.65)">
+          Trabalhamos para transformar complexidade em decisões compreensíveis. Ética, transparência, comprometimento e dedicação orientam cada relacionamento.
+        </p>
+       <div class="values-row" style="margin-top:2rem">
+          <div class="value-item">Ética</div>
+          <div class="value-item">Clareza</div>
+          <div class="value-item">Agilidade</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background:var(--cream);padding:4rem 0">
+    <div class="wrap">
+      <div class="cta-panel reveal">
+        <div>
+        <p class="eyebrow" style="color:var(--gold3);margin-top:1.5rem; margin-bottom: 15px;">Próximo passo</p>
+        <h2 style="min-width: 550px;">Converse com quem entende o seu negócio.</h2>
+        </div>
+        <a href="#" class="btn btn-gold" style="flex-shrink:0" onclick="showPage('contato');return false">
+          Entre em contato
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /home -->
+
+<!-- ══════════════════════════════════════════════
+     SOBRE NÓS
+══════════════════════════════════════════════ -->
+<div id="page-sobre" class="page">
+
+  <div class="page-hero" style="padding:0 80px">
+    <img class="page-hero-img" src="./03-hero-sobre-nos.png" alt=""/>
+    <div class="wrap" style="position:relative;z-index:2;width:100%">
+      <div class="page-hero-content reveal">
+        <p class="eyebrow" style="color:var(--gold3)">Sobre nós</p>
+        <h1 class="display" style="font-size:clamp(3rem,7vw,5.5rem);color:#fff;margin-top:1rem">Trabalhamos pelo seu negócio.</h1>
+        <p style="margin-top:1.25rem;color:rgba(255,255,255,.68);font-size:1rem;line-height:1.75">
+          Uma consultoria integrada, criada para oferecer clareza ao pequeno e médio empresário em cada decisão contábil, tributária e jurídica.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <section style="background-color: white;">
+    <div class="wrap section-2col">
+      <div>
+        <p class="eyebrow">Nossa trajetória</p>
+        <h2 class="section-title" style="margin-top:.75rem">Simplicidade para lidar com o que é complexo.</h2>
+      </div>
+      <div class="reveal" style="color:var(--muted);font-size:.95rem;line-height:1.95">
+        <p style="font-family:var(--serif);font-size:clamp(1.5rem,2.2vw,2rem);font-weight:500;line-height:1.35;color:#33332c">
+          Começamos nossa jornada com a convicção de prestar serviços de forma simples, rápida e eficaz, proporcionando tranquilidade para que o empresário gerencie e desenvolva o seu negócio.
+        </p>
+        <p style="margin-top:1.5rem">
+          A JP Consultoria atua com consultoria contábil, tributária, jurídica e auditoria independente. Nossa abordagem é customizada, da estratégia à prática, incorporando tecnologia e conhecimento especializado.
+        </p>
+        <p style="margin-top:1.5rem">
+          A empresa foi criada para atender pequenos e médios empresários em uma plataforma completa: além da contabilidade tradicional, oferecemos ferramentas de gestão, indicadores de desempenho, apuração de resultados, planejamento tributário, análises gerenciais e planejamento financeiro.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:0;background:var(--cream); margin: 50px;
+    border-inline: solid 37px #dfdaca;">
+    <div class="wrap">
+      <div class="stats-row reveal">
+        <div class="stat-item"><strong>100+</strong><p>clientes atendidos</p></div>
+        <div class="stat-item"><strong>360°</strong><p>visão empresarial</p></div>
+        <div class="stat-item"><strong>03</strong><p>frentes integradas</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--dark2);color:#fff">
+    <div class="wrap">
+      <div style="max-width:40rem">
+        <p class="eyebrow" style="color:var(--gold3)">O que nos orienta</p>
+        <h2 class="display" style="font-size:clamp(2.4rem,5vw,4.5rem);color:#fff;margin-top:1rem">
+          A melhor escolha para a sua empresa começa por princípios claros.
+        </h2>
+      </div>
+      <div class="mvv-grid reveal" style="margin-top:3rem">
+        <div class="mvv-card">
+          <span class="mvv-card .num" style="font-family:var(--serif);font-size:1.2rem;color:rgba(255,255,255,.22);float:right; padding: 0;">01</span>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" style="color:var(--gold2)"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          <h3 class="serif" style="font-size:2.6rem;font-weight:600;margin-top:3rem">Missão</h3>
+          <p style="font-size:.82rem;line-height:1.8;color:rgba(255,255,255,.55);margin-top:1rem">Oferecer soluções empresariais por meio de consultoria em gestão financeira, contábil e tributária.</p>
+        </div>
+        <div class="mvv-card">
+          <span style="font-family:var(--serif);font-size:1.2rem;color:rgba(255,255,255,.22);float:right">02</span>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" style="color:var(--gold2)"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          <h3 class="serif" style="font-size:2.6rem;font-weight:600;margin-top:3rem">Visão</h3>
+          <p style="font-size:.82rem;line-height:1.8;color:rgba(255,255,255,.55);margin-top:1rem">Ser referência em consultoria com soluções rápidas e assertivas, gerando valor para nossos parceiros.</p>
+        </div>
+        <div class="mvv-card">
+          <span style="font-family:var(--serif);font-size:1.2rem;color:rgba(255,255,255,.22);float:right">03</span>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" style="color:var(--gold2)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <h3 class="serif" style="font-size:2.6rem;font-weight:600;margin-top:3rem">Valores</h3>
+          <p style="font-size:.82rem;line-height:1.8;color:rgba(255,255,255,.55);margin-top:1rem">Ética, transparência, comprometimento e dedicação para buscar excelência em cada trabalho.</p>
+        </div>
+      </div>
+      <a href="#" class="btn btn-gold" style="margin-top:3rem" onclick="showPage('contato');return false">
+        Fale com nossa equipe
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </section>
+
+</div><!-- /sobre -->
+
+<!-- ══════════════════════════════════════════════
+     SERVIÇOS
+══════════════════════════════════════════════ -->
+<div id="page-servicos" class="page">
+
+  <div class="page-hero" style="padding: 0 80px;">
+    <img class="page-hero-img" src="./04-hero-servicos-e-links-uteis.png" alt=""/>
+    <div class="wrap" style="position:relative;z-index:2;width:100%">
+      <div class="page-hero-content reveal">
+        <p class="eyebrow" style="color:var(--gold3)">Nossos serviços</p>
+        <h1 class="display" style="font-size:clamp(3rem,7vw,5.5rem);color:#fff;margin-top:1rem">Estratégia, rotina e suporte em um só lugar.</h1>
+        <p style="margin-top:1.25rem;color:rgba(255,255,255,.68);font-size:1rem;line-height:1.75">
+          Soluções integradas para estruturar processos, atender obrigações e orientar decisões empresariais com mais segurança.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <section style=" background-color: white;">
+    <div class="wrap section-2col">
+      <div class="sticky-col">
+        <p class="eyebrow">Áreas de atuação</p>
+        <h2 class="section-title" style="margin-top:.75rem">Apoio técnico que acompanha a empresa.</h2>
+        <p style="margin-top:1.25rem;font-size:.84rem;line-height:1.75;color:var(--muted);max-width:24rem">
+          Abra cada área para conhecer as atividades incluídas. O atendimento é ajustado à realidade e às prioridades de cada negócio.
+        </p>
+      </div>
+      <div class="accordion reveal">
+        <details class="acc-item">
+          <summary>
+            <span class="acc-left">
+              <span class="acc-num">01</span>
+              <svg class="acc-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              <span class="acc-title"><strong>Assessoria fiscal e tributária</strong><small>Planejamento e conformidade tributária completos.</small></span>
+            </span>
+            <span class="acc-plus">+</span>
+          </summary>
+          <div class="acc-body">
+            <div class="acc-bullet">Análise e escolha do regime tributário mais vantajoso</div>
+            <div class="acc-bullet">Apuração de tributos diretos e indiretos</div>
+            <div class="acc-bullet">Acompanhamento de mudanças na legislação fiscal</div>
+            <div class="acc-bullet">Elaboração de livros fiscais</div>
+            <div class="acc-bullet">Entrega de declarações mensais, semestrais e anuais</div>
+            <div class="acc-bullet">Escrituração de compras, vendas e demais registros fiscais</div>
+            <div class="acc-bullet">Apuração de tributos municipais, estaduais e federais</div>
+            <div class="acc-bullet">Envio de obrigações acessórias, incluindo SPED, GIA e DCTF</div>
+          </div>
+        </details>
+        <details class="acc-item">
+          <summary>
+            <span class="acc-left">
+              <span class="acc-num">02</span>
+              <svg class="acc-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/></svg>
+              <span class="acc-title"><strong>Assessoria contábil</strong><small>Rotinas contábeis estruturadas, demonstrações claras e tecnologia aplicada ao dia a dia.</small></span>
+            </span>
+            <span class="acc-plus">+</span>
+          </summary>
+          <div class="acc-body">
+            <div class="acc-bullet">Escrituração contábil completa da empresa</div>
+            <div class="acc-bullet">Elaboração de balancetes e balanços patrimoniais</div>
+            <div class="acc-bullet">Conciliação de contas e relatórios gerenciais</div>
+            <div class="acc-bullet">Apuração de resultados e análise financeira</div>
+          </div>
+        </details>
+        <details class="acc-item">
+          <summary>
+            <span class="acc-left">
+              <span class="acc-num">03</span>
+              <svg class="acc-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <span class="acc-title"><strong>Departamento pessoal</strong><small>Gestão trabalhista, folha e obrigações com suporte próximo e processos digitais.</small></span>
+            </span>
+            <span class="acc-plus">+</span>
+          </summary>
+          <div class="acc-body">
+            <div class="acc-bullet">Elaboração da folha de pagamento</div>
+            <div class="acc-bullet">Admissões, demissões e férias</div>
+            <div class="acc-bullet">Rescisões contratuais e cálculos trabalhistas</div>
+            <div class="acc-bullet">eSocial, SEFIP, CAGED e demais obrigações</div>
+          </div>
+        </details>
+        <details class="acc-item">
+          <summary>
+            <span class="acc-left">
+              <span class="acc-num">04</span>
+              <svg class="acc-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="8" r="6"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85"/></svg>
+              <span class="acc-title"><strong>Marcas e patentes</strong><small>Acompanhamento do registro da pesquisa de viabilidade à emissão do certificado.</small></span>
+            </span>
+            <span class="acc-plus">+</span>
+          </summary>
+          <div class="acc-body">
+            <div class="acc-bullet">Registro de marcas junto ao INPI</div>
+            <div class="acc-bullet">Depósito e acompanhamento de patentes</div>
+            <div class="acc-bullet">Levantamento de ativo fixo com laudo técnico</div>
+          </div>
+        </details>
+        <details class="acc-item">
+          <summary>
+            <span class="acc-left">
+              <span class="acc-num">05</span>
+              <svg class="acc-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 9l2-5h14l2 5"/><path d="M4 9v11h16V9"/><path d="M9 20v-6h6v6"/></svg>
+              <span class="acc-title"><strong>Abertura de empresas</strong><small>Constituição, alteração e encerramento com orientação especializada na Jucesp.</small></span>
+            </span>
+            <span class="acc-plus">+</span>
+          </summary>
+          <div class="acc-body">
+            <div class="acc-bullet">Abertura, alteração e baixa na Jucesp</div>
+            <div class="acc-bullet">Definição de CNAE, regime e contrato social</div>
+            <div class="acc-bullet">Registro em órgãos estaduais e municipais</div>
+          </div>
+        </details>
+        <details class="acc-item">
+          <summary>
+            <span class="acc-left">
+              <span class="acc-num">06</span>
+              <svg class="acc-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 12a9 9 0 1 0 9-9 9 9 0 0 0-6.4 2.7L3 8"/><path d="M3 3.5V8h4.5"/><path d="M12 8.5v7M10.3 10.2h2.4a1.35 1.35 0 0 1 0 2.7h-1.4a1.35 1.35 0 0 0 0 2.7h2.4"/></svg>
+              <span class="acc-title"><strong>Recuperação de impostos</strong><small>Avaliação de tributos e declarações para restituição ou compensação de valores.</small></span>
+            </span>
+            <span class="acc-plus">+</span>
+          </summary>
+          <div class="acc-body">
+            <div class="acc-bullet">Análise de créditos tributários acumulados</div>
+            <div class="acc-bullet">Elaboração de PER/DCOMP</div>
+            <div class="acc-bullet">Compensação ou restituição de valores devidos</div>
+          </div>
+        </details>
+        <details class="acc-item">
+          <summary>
+            <span class="acc-left">
+              <span class="acc-num">07</span>
+              <svg class="acc-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="9" y="2" width="6" height="5" rx="1"/><rect x="2" y="17" width="6" height="5" rx="1"/><rect x="16" y="17" width="6" height="5" rx="1"/><path d="M12 7v4M5 17v-2.5h14V17"/></svg>
+              <span class="acc-title"><strong>Abertura de holding</strong><small>Estruturação patrimonial e societária para proteger e organizar seus ativos.</small></span>
+            </span>
+            <span class="acc-plus">+</span>
+          </summary>
+          <div class="acc-body">
+            <div class="acc-bullet">Estudo de viabilidade e estrutura societária</div>
+            <div class="acc-bullet">Constituição da holding patrimonial ou familiar</div>
+            <div class="acc-bullet">Planejamento sucessório tributário</div>
+          </div>
+        </details>
+        <details class="acc-item">
+          <summary>
+            <span class="acc-left">
+              <span class="acc-num">08</span>
+              <svg class="acc-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 13v-1a8 8 0 0 1 16 0v1"/><rect x="2.5" y="13" width="4" height="6" rx="1.5"/><rect x="17.5" y="13" width="4" height="6" rx="1.5"/><path d="M20 19a4 4 0 0 1-4 3.2h-2"/></svg>
+              <span class="acc-title"><strong>Suporte diferenciado</strong><small>Atendimento por e-mail, telefone e WhatsApp com resposta ágil.</small></span>
+            </span>
+            <span class="acc-plus">+</span>
+          </summary>
+          <div class="acc-body">
+            <div class="acc-bullet">Atendimento por e-mail, telefone e WhatsApp</div>
+            <div class="acc-bullet">Resposta ágil em horário comercial</div>
+            <div class="acc-bullet">Acompanhamento contínuo das necessidades do cliente</div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--cream);padding:4rem 0">
+    <div class="wrap">
+      <div style="border-left:2px solid var(--gold);padding-left:1.5rem;display:flex;flex-wrap:wrap;gap:2rem;align-items:center;justify-content:space-between">
+        <div>
+          <p class="eyebrow">Precisa de orientação?</p>
+          <h2 class="serif" style="font-size:clamp(2rem,4vw,3.5rem);font-weight:600;letter-spacing:-.025em;margin-top:.75rem;color:var(--dark2)">Vamos entender o seu cenário.</h2>
+        </div>
+        <a href="#" class="btn btn-dark" onclick="showPage('contato');return false">Entre em contato</a>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /servicos -->
+
+<!-- ══════════════════════════════════════════════
+     LINKS ÚTEIS
+══════════════════════════════════════════════ -->
+<div id="page-links" class="page">
+
+  <div class="page-hero" style="padding: 0 80px;">
+    <img class="page-hero-img" src="./04-hero-servicos-e-links-uteis.png" alt=""/>
+    <div class="wrap" style="position:relative;z-index:2;width:100%">
+      <div class="page-hero-content reveal">
+        <p class="eyebrow" style="color:var(--gold3)">Links úteis</p>
+        <h1 class="display" style="font-size:clamp(3rem,7vw,5.5rem);color:#fff;margin-top:1rem">Acesso rápido a fontes oficiais.</h1>
+        <p style="margin-top:1.25rem;color:rgba(255,255,255,.68);font-size:1rem;line-height:1.75">
+          Uma seleção organizada de portais públicos, certidões e ferramentas para apoiar as rotinas fiscais, trabalhistas e empresariais.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <section style="background:var(--cream)">
+    <div class="wrap">
+      <div style="display:grid;gap:2rem;margin-bottom:3.5rem" class="reveal">
+        <div style="display:flex;gap:1rem;align-items:end" id="links-header">
+          <div>
+            <p class="eyebrow">Biblioteca</p>
+            <h2 class="section-title" style="margin-top:.75rem;">Encontre o portal que precisa.</h2>
+          </div>
+          <label class="search-box" style="width: 100%;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input id="linkSearch" type="search" placeholder="Pesquisar por órgão ou serviço" oninput="filterLinks(this.value)"/>
+          </label>
+        </div>
+      </div>
+
+      <div id="link-groups"></div>
+      <div id="no-results">
+        <p>Nenhum link encontrado.</p>
+        <p>Tente pesquisar com outro termo.</p>
+      </div>
+
+      <p style="margin-top:2.5rem;font-size:.75rem;line-height:1.7;color:var(--muted)">
+        Os endereços externos podem ser alterados pelos respectivos órgãos. Os links abrem em uma nova aba.
+      </p>
+    </div>
+  </section>
+
+</div><!-- /links -->
+
+<!-- ══════════════════════════════════════════════
+     CONTATO
+══════════════════════════════════════════════ -->
+<div id="page-contato" class="page">
+
+  <div class="page-hero" style="padding: 0 80px;">
+    <img class="page-hero-img" src="./05-hero-contato.png" alt=""/>
+    <div class="wrap" style="position:relative;z-index:2;width:100%">
+      <div class="page-hero-content reveal">
+        <p class="eyebrow" style="color:var(--gold3)">Fale conosco</p>
+        <h1 class="display" style="font-size:clamp(3rem,7vw,5.5rem);color:#fff;margin-top:1rem">Sua dúvida merece uma resposta clara.</h1>
+        <p style="margin-top:1.25rem;color:rgba(255,255,255,.68);font-size:1rem;line-height:1.75">
+          Conte-nos sobre o momento da sua empresa. Nossa equipe está disponível para entender o cenário e indicar o melhor próximo passo.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <section style="background-color: white;">
+    <div class="wrap contact-grid">
+      <!-- Info -->
+      <div class="reveal">
+        <p class="eyebrow">Contato direto</p>
+        <h2 class="section-title" style="margin-top:.75rem">Estamos próximos de você.</h2>
+        <p style="margin-top:1.25rem;font-size:.84rem;line-height:1.75;color:var(--muted);max-width:24rem">
+          Prefere conversar agora? Fale com Jackson Nunes por telefone, e-mail ou WhatsApp.
+        </p>
+        <div style="margin-top:2rem;border-top:1px solid var(--border)">
+          <a href="tel:+5511964707668" class="contact-row">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l1.27-.73a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span><small>Telefone</small><strong>11 96470-7668</strong></span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+          <a href="mailto:jackson@jptributariojuridico.com.br" class="contact-row">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+            <span><small>E-mail</small><strong style="word-break:break-all">jackson@jptributariojuridico.com.br</strong></span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+          <a href="https://www.google.com/maps?q=Avenida+Mofarrej,+348,+Conjunto+305,+Vila+Leopoldina,+S%C3%A3o+Paulo" target="_blank" rel="noreferrer" class="contact-row" style="align-items:flex-start">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" style="margin-top:.1rem"><path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span><small>Endereço</small><strong style="font-weight:500;line-height:1.6">Av. Mofarrej, 348 — Conj. 305<br>Vila Leopoldina, São Paulo — SP, 05311-000</strong></span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="margin-top:.1rem"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+        <a href="https://wa.me/5511964707668?text=Olá!%20Gostaria%20de%20falar%20com%20a%20JP%20Consultoria." target="_blank" rel="noreferrer" class="btn btn-dark" style="margin-top:1.75rem">
+          Conversar pelo WhatsApp
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+      </div>
+
+      <!-- Form -->
+      <div class="contact-form reveal">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem">
+          <div>
+            <p class="eyebrow">Envie sua mensagem</p>
+            <h3 class="serif" style="font-size:2.5rem;font-weight:600;letter-spacing:-.025em;margin-top:.75rem;color:var(--dark2)">Tire sua dúvida.</h3>
+          </div>
+          <span class="serif" style="font-size:3.5rem;font-weight:600;color:rgba(141,116,31,.18);line-height:1;display:none" id="form-num">01</span>
+        </div>
+        <style>@media(min-width:480px){#form-num{display:block}}</style>
+        <form id="contactForm" style="margin-top:2rem" onsubmit="sendForm(event)">
+          <div class="form-grid">
+            <div class="form-row">
+              <label class="field-label">Nome <span style="color:var(--gold)">*</span><input class="field-input" name="name" required autocomplete="name" placeholder="Seu nome"/></label>
+              <label class="field-label">Empresa<input class="field-input" name="company" autocomplete="organization" placeholder="Nome da empresa"/></label>
+            </div>
+            <div class="form-row">
+              <label class="field-label">E-mail <span style="color:var(--gold)">*</span><input class="field-input" type="email" name="email" required autocomplete="email" placeholder="voce@empresa.com.br"/></label>
+              <label class="field-label">Telefone <span style="color:var(--gold)">*</span><input class="field-input" name="phone" required autocomplete="tel" placeholder="(11) 99999-9999"/></label>
+            </div>
+            <label class="field-label">Como podemos ajudar? <span style="color:var(--gold)">*</span><textarea class="field-input" name="message" required placeholder="Escreva uma breve mensagem"></textarea></label>
+          </div>
+          <button type="submit" class="btn btn-gold" style="margin-top:1.25rem">
+            Preparar mensagem
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </button>
+          <p class="form-note">Ao enviar, seu aplicativo de e-mail será aberto com a mensagem preenchida.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--dark2);padding:2rem 0">
+    <div class="wrap" style="display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:space-between;font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5)">
+      <span>Contabilidade</span><span style="color:var(--gold);display:none" class="sep">◆</span><span>Imposto</span><span style="color:var(--gold);display:none" class="sep">◆</span><span>Consultivo</span>
+    </div>
+    <style>@media(min-width:640px){.sep{display:inline!important}}</style>
+  </section>
+
+</div><!-- /contato -->
+
+<!-- Footer (sempre visível) -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="logo">
+          <img src="./01-logo-original.png" alt="JP Consultoria" style="mix-blend-mode:lighten"/>
+        </div>
+        <p class="tagline">Consultoria empresarial com atuação contábil, tributária e jurídica para apoiar decisões mais seguras.</p>
+      </div>
+      <div>
+        <p class="footer-label">Navegação</p>
+        <div class="footer-links">
+          <a href="#" onclick="showPage('home');return false">Home</a>
+          <a href="#" onclick="showPage('sobre');return false">Sobre nós</a>
+          <a href="#" onclick="showPage('servicos');return false">Serviços</a>
+          <a href="#" onclick="showPage('links');return false">Links úteis</a>
+          <a href="#" onclick="showPage('contato');return false">Contato</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-label">Contato</p>
+        <div class="footer-contact-list">
+          <a href="tel:+5511964707668" class="footer-contact-row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l1.27-.73a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>11 96470-7668</span></a>
+          <a href="mailto:jackson@jptributariojuridico.com.br" class="footer-contact-row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg><span style="word-break:break-all">jackson@jptributariojuridico.com.br</span></a>
+          <div class="footer-contact-row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Av. Mofarrej, 348 — Conj. 305<br>Vila Leopoldina, São Paulo — SP</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="yr"></span> JP Consultoria Tributária e Jurídica.</span>
+      <span>Contabilidade · Imposto · Consultivo</span>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp float -->
+<a href="https://wa.me/5511964707668?text=Olá!%20Gostaria%20de%20falar%20com%20a%20JP%20Consultoria." target="_blank" rel="noreferrer" class="wa-float" aria-label="WhatsApp">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1.1-.1.2-.3.2-.6.1-1.5-.7-2.5-1.3-3.5-3-.3-.5.3-.4.7-1.3.1-.2 0-.4 0-.5s-.6-1.5-.9-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-.9 2.2-.2 3.4 1.3 2 2.3 2.9 4.3 3.7 1.7.7 2 .6 2.4.5.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15l-1.3 4.9 5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-2.9-.4-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+  <span>WhatsApp</span>
+</a>
+
+<script>
+// ─── Data ───────────────────────────────────────────
+const linkGroups = [
+  { title:"Federal", links:[
+    {label:"Receita Federal", url:"https://www.gov.br/receitafederal/pt-br"},
+    {label:"Simples Nacional", url:"https://www8.receita.fazenda.gov.br/SimplesNacional/"},
+    {label:"e-CAC", url:"https://cav.receita.fazenda.gov.br/autenticacao/login"},
+    {label:"Portal SPED", url:"http://sped.rfb.gov.br/"},
+    {label:"Nota Fiscal Eletrônica", url:"https://www.nfe.fazenda.gov.br/portal/principal.aspx"},
+    {label:"Portal eSocial", url:"https://www.gov.br/esocial/pt-br"},
+    {label:"PGFN — Dívida Ativa", url:"https://www.gov.br/pgfn/pt-br"},
+    {label:"INPI — Marcas e Patentes", url:"https://www.gov.br/inpi/pt-br"},
+  ]},
+  { title:"Estadual e Municipal (SP)", links:[
+    {label:"SEFAZ-SP", url:"https://portal.fazenda.sp.gov.br/"},
+    {label:"NFS-e São Paulo", url:"https://nfe.prefeitura.sp.gov.br/login.aspx"},
+    {label:"Jucesp", url:"https://www.jucesp.sp.gov.br/"},
+    {label:"Prefeitura de São Paulo", url:"https://www.prefeitura.sp.gov.br/"},
+  ]},
+  { title:"Trabalhistas", links:[
+    {label:"Ministério do Trabalho", url:"https://www.gov.br/trabalho-e-emprego/pt-br"},
+    {label:"INSS", url:"https://www.gov.br/inss/pt-br"},
+    {label:"FGTS — Caixa", url:"https://www.caixa.gov.br/beneficios-trabalhadores/fgts"},
+    {label:"Certificado de Regularidade do FGTS — CRF", url:"https://consulta-crf.caixa.gov.br/consultacrf/pages/consultaEmpregador.jsf"},
+  ]},
+  { title:"Certidões negativas", links:[
+    {label:"Certidão Negativa Federal", url:"https://solucoes.receita.fazenda.gov.br/Servicos/certidaointernet/PF/EmitirCertidao.asp"},
+    {label:"Consulta CNPJ", url:"https://servicos.receita.fazenda.gov.br/Servicos/cnpjreva/Cnpjreva_Solicitacao.asp"},
+    {label:"Diário Oficial da União", url:"https://www.in.gov.br/"},
+  ]},
+];
+
+// ─── SPA router ─────────────────────────────────────
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  document.querySelectorAll('.nav-link, .mobile-nav a[data-page]').forEach(a => {
+    a.classList.toggle('active', a.dataset.page === id);
+  });
+  window.scrollTo({top:0, behavior:'instant'});
+  initReveal();
+}
+
+// ─── Mobile menu ─────────────────────────────────────
+const menuBtn = document.getElementById('menuBtn');
+const mobileNav = document.getElementById('mobileNav');
+const icoMenu = document.getElementById('ico-menu');
+const icoClose = document.getElementById('ico-close');
+menuBtn.addEventListener('click', () => {
+  const open = mobileNav.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded', open);
+  icoMenu.style.display  = open ? 'none' : '';
+  icoClose.style.display = open ? '' : 'none';
+});
+function closeMobile() {
+  mobileNav.classList.remove('open');
+  icoMenu.style.display = '';
+  icoClose.style.display = 'none';
+  menuBtn.setAttribute('aria-expanded', false);
+}
+
+// ─── Links úteis render ───────────────────────────────
+function renderLinks(query) {
+  const q = (query || '').trim().toLowerCase();
+  const container = document.getElementById('link-groups');
+  const noRes = document.getElementById('no-results');
+  let html = '', total = 0;
+  linkGroups.forEach(group => {
+    const filtered = q ? group.links.filter(l => l.label.toLowerCase().includes(q)) : group.links;
+    if (!filtered.length) return;
+    total += filtered.length;
+    html += `<div class="link-group"><h3 class="serif">${group.title}<span>${filtered.length} ${filtered.length===1?'link':'links'}</span></h3><div class="link-grid">`;
+    filtered.forEach(l => {
+      html += `<a href="${l.url}" target="_blank" rel="noreferrer" class="link-item">${l.label}<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>`;
+    });
+    html += '</div></div>';
+  });
+  container.innerHTML = html;
+  noRes.style.display = total ? 'none' : 'block';
+}
+function filterLinks(v) { renderLinks(v); }
+renderLinks('');
+
+// ─── Contact form ─────────────────────────────────────
+function sendForm(e) {
+  e.preventDefault();
+  const f = e.target;
+  const name = f.name.value.trim();
+  const company = f.company.value.trim();
+  const phone = f.phone.value.trim();
+  const message = f.message.value.trim();
+  const subject = encodeURIComponent(`Contato pelo site — ${name}`);
+  const body = encodeURIComponent(`Nome: ${name}\nEmpresa: ${company||'Não informada'}\nTelefone: ${phone}\n\nMensagem:\n${message}`);
+  window.location.href = `mailto:jackson@jptributariojuridico.com.br?subject=${subject}&body=${body}`;
+}
+
+// ─── Reveal on scroll ─────────────────────────────────
+function initReveal() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+    return;
+  }
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }});
+  }, {threshold:.12, rootMargin:'0px 0px -5% 0px'});
+  document.querySelectorAll('.reveal:not(.in)').forEach(el => io.observe(el));
+}
+initReveal();
+
+// ─── Year ─────────────────────────────────────────────
+document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
