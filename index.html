@@ -170,6 +170,25 @@ nav.desktop{display:none}
 .mvv-card h3{font-family:var(--serif);font-size:2.8rem;font-weight:600;margin-top:3rem}
 .mvv-card p{font-size:.82rem;line-height:1.8;color:rgba(255,255,255,.58);margin-top:1.25rem}
 
+/* ─── Jackson image ──────────────────────────────────── */
+.team-section{background:var(--cream)}
+.team-heading{max-width:34rem;margin:0 auto 3rem;text-align:center}
+.team-grid{display:grid;grid-template-columns:1fr;max-width:20rem;gap:2rem;margin-inline:auto}
+.team-card{position:relative;aspect-ratio:4/5;overflow:hidden;isolation:isolate;background:#2a2a22;box-shadow:0 20px 50px rgba(23,23,19,.18)}
+.team-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 18%;transition:transform 420ms var(--ease)}
+.team-card:hover img,.team-card:focus-within img{transform:scale(1.05)}
+.team-card::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(23,23,19,.95) 0%,rgba(23,23,19,.12) 42%,rgba(23,23,19,0) 58%);transition:background 420ms var(--ease)}
+.team-card:hover::before,.team-card:focus-within::before{background:linear-gradient(0deg,rgba(23,23,19,.97) 0%,rgba(23,23,19,.74) 55%,rgba(23,23,19,.2) 100%)}
+.team-info{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:1.5rem;color:#fff}
+.team-info h3{margin:0;font-family:var(--serif);font-size:1.6rem;font-weight:600;white-space:nowrap}
+.team-role{margin:.3rem 0 0;color:var(--gold3);font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.team-contact{max-height:0;opacity:0;overflow:hidden;transition:max-height 380ms var(--ease) 40ms,opacity 300ms var(--ease) 40ms}
+.team-card:hover .team-contact,.team-card:focus-within .team-contact{max-height:120px;opacity:1}
+.team-contact{margin-top:.85rem;padding-top:.85rem;border-top:1px solid rgba(255,255,255,.22);display:grid;gap:.5rem}
+.team-contact a{display:flex;align-items:center;gap:.5rem;color:rgba(255,255,255,.88);font-size:.72rem;font-weight:600;line-height:1.3;transition:color 180ms var(--ease)}
+.team-contact a:hover{color:var(--gold3)}
+.team-contact svg{width:14px;height:14px;flex:0 0 auto;color:var(--gold3)}
+
 /* ─── Services accordion ─────────────────────── */
 .accordion{border-top:1px solid var(--border)}
 details.acc-item{border-bottom:1px solid var(--border)}
@@ -398,7 +417,7 @@ footer p.tagline{font-size:.83rem;color:rgba(255,255,255,.55);max-width:22rem;li
       </div>
       <div class="service-grid reveal">
         <div class="service-card"><div class="separate"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span class="num">01</span></div><h3>Fiscal e tributário</h3><p>Planejamento, auditoria e acompanhamento para decisões tributárias mais seguras.</p><svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-        <div class="service-card"><div class="separate"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/><line x1="9" y1="15" x2="11" y2="15"/></svg><span class="num">02</span></div><h3>Assessoria contábil</h3><p>Rotinas contábeis estruturadas, demonstrações claras e tecnologia aplicada ao dia a dia.</p><svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+          <div class="service-card"><div class="separate"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/></svg><span class="num">02</span></div><h3>Assessoria contábil</h3><p>Rotinas contábeis estruturadas, demonstrações claras e tecnologia aplicada ao dia a dia.</p><svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
         <div class="service-card"><div class="separate"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span class="num">03</span></div><h3>Departamento pessoal</h3><p>Gestão trabalhista, folha e obrigações com suporte próximo e processos digitais.</p><svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
         <div class="service-card"><div class="separate"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="8" r="6"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg><span class="num">04</span></div><h3>Marcas e patentes</h3><p>Acompanhamento do registro da pesquisa de viabilidade à emissão do certificado.</p><svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
         <div class="service-card"><div class="separate"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 9l2-5h14l2 5"/><path d="M4 9v11h16V9"/><path d="M9 20v-6h6v6"/><path d="M4 9a2.5 2.5 0 0 0 4 0 2.5 2.5 0 0 0 4 0 2.5 2.5 0 0 0 4 0 2.5 2.5 0 0 0 4 0"/></svg><span class="num">05</span></div><h3>Abertura de empresas</h3><p>Constituição, alteração e encerramento na Jucesp com orientação especializada.</p><svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
@@ -528,6 +547,30 @@ footer p.tagline{font-size:.83rem;color:rgba(255,255,255,.55);max-width:22rem;li
         Fale com nossa equipe
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
+    </div>
+  </section>
+
+  <!-- Equipe -->
+  <section class="team-section">
+    <div class="wrap">
+      <div class="team-grid reveal">
+        <article class="team-card" tabindex="0">
+          <img src="./jackson.jpg" alt="Jackson Nunes">
+          <div class="team-info">
+            <h3>Jackson Nunes</h3>
+            <div class="team-contact">
+              <a href="mailto:jackson@jptributariojuridico.com.br">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+                jackson@jptributariojuridico.com.br
+              </a>
+              <a href="tel:+5511964707668">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l1.27-.73a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.03z"/></svg>
+                11 96470-7668
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 
